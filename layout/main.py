@@ -5,7 +5,6 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import pandas
 from dash.dependencies import Input, Output
-from datetime import date
 
 from app import app
 
@@ -19,30 +18,15 @@ df_act = transforms.df_act
 
 MAIN_STYLE = {
     "margin-left": "16rem",
-    "margin-right": "2rem",
+    "margin-top": "6rem",
     # "padding": "0rem 0rem",
 }
 
-# variables
-today = date.today()
 # add (All) to show world data
 countries = ['(All)'] + df_con['Country/Region'].dropna().unique().tolist()
 states = ['(All)'] + df_con['Province/State'].dropna().unique().tolist()
-colors = {
-    'background': 'rgb(40, 51, 74)',
-    'text': 'rgb(255,255,255)'
-}
 
 layout = html.Div([
-
-    html.Div([
-        html.H2([
-            'COVID-19 CASES - DASHBOARD',
-        ]),
-        html.P([
-            today.strftime("%A, %B %d, %Y")
-        ]),
-    ], style={'backgroundColor':colors['background'],'color':colors['text']}),
 
     # choose options
     html.Div([

@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 from app import app
-from layout import main, sidebar
+from layout import main, sidebar, navbar
 from database import transforms
 
 # load data
@@ -29,6 +29,7 @@ for country in countries_having_states:
 app.layout = html.Div([
     main.layout,
     sidebar.layout,
+    navbar.layout,
 ])
 
 # country-dropdown -> state-dropdown

@@ -6,7 +6,7 @@ import dash_html_components as html
 # the style arguments for the sidebar. We use position:fixed and a fixed width
 SIDEBAR_STYLE = {
     "position": "fixed",
-    "top": 0,
+    "top": "5rem",
     "left": 0,
     "bottom": 0,
     "width": "16rem",
@@ -15,29 +15,15 @@ SIDEBAR_STYLE = {
     'display':'inline-block',
 }
 
-layout = html.Div(
-    [
-        # html.H6('CONFIRMED'),
-        # html.H3(id='confirmed-number'),
-        # html.P('Active'),
-        # html.P(id='active-number'),
-        # html.P('Recovered'),
-        # html.P(id='recovered-number'),
-        # html.P('Fatal'),
-        # html.P(id='fatal-number'),
+layout = html.Div([
 
-        html.P(
-            "A simple sidebar layout with navigation links", className="lead"
-        ),
-        dbc.Nav(
-            [
-                dbc.NavLink("Page 1", href="/page-1", id="page-1-link"),
-                dbc.NavLink("Page 2", href="/page-2", id="page-2-link"),
-                dbc.NavLink("Page 3", href="/page-3", id="page-3-link"),
-            ],
-            vertical=True,
-            pills=True,
-        ),
-    ],
-    style=SIDEBAR_STYLE,
-)
+    html.Div([
+        "Global",
+    ], style={'width':'50%','display':'inline-block'}),
+    html.Div([
+        "523232",
+    ], style={'textAlign':'right','width':'50%','display':'inline-block'}),
+
+    html.Hr(),
+
+], style=SIDEBAR_STYLE)
