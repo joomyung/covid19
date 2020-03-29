@@ -24,11 +24,13 @@ NAVBAR_STYLE = {
 # layout
 layout = html.Div([
 
-    html.H2([
-        'COVID-19 CASES - DASHBOARD',
-    ]),
-    html.P([
-        today.strftime("%A, %B %d, %Y")
-    ]),
-
+    html.Div([
+        html.H2([
+            'COVID-19 CASES - DASHBOARD',
+        ]),
+        html.P([
+            today.strftime("%A, %B %d, %Y")
+        ]),
+    ], style={'margin-left':'10px'})
+    
 ], style=NAVBAR_STYLE)
