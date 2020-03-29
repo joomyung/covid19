@@ -19,6 +19,24 @@ df_act = transforms.df_act
 
 # variables
 scale = 10 # map scale
+
+# add (All) to show world data
+countries = ['(All)'] + df_con['Country/Region'].dropna().unique().tolist()
+states = ['(All)'] + df_con['Province/State'].dropna().unique().tolist()
+
+# create country_buttons to sort country buttons
+country_cases = {}
+for country in countries[1:]:
+    country_cases[country] = df_con[df_con['Country/Region']==country].iloc[:, 4:].sum()[-1]
+
+dff = pd.DataFrame(country_cases.items())
+dff.columns = ['Country/Region', 'Cases']
+dff = dff.sort_values(by=['Cases'], ascending=False)
+country_buttons = dff['Country/Region']
+
+print(country_buttons)
+print(dff['Cases'])
+
 # countries having states in dictionary
 countries_states = {}
 countries_having_states = df_con[df_con['Province/State'].notnull()]['Country/Region'].unique()
@@ -32,6 +50,26 @@ app.layout = html.Div([
     navbar.layout,
 ])
 
+## sidebar.py
+# dynamic country button
+@app.callback(
+    Output('country-button', 'children'),
+    [Input('country-dropdown', 'value')]
+)
+def update_country_button(country_value):
+    return [
+        dbc.Button(id=country+'-button', children = [
+            html.Div([
+                country,
+            ], style={'textAlign':'left', 'width':'50%','display':'inline-block'}),
+            html.Div(
+                dff[dff['Country/Region']==country]['Cases']
+            , style={'textAlign':'right','width':'50%','display':'inline-block'}),
+        ], outline=True, color='dark', block=True)
+        for country in country_buttons
+    ]
+
+## main.py
 # country-dropdown -> state-dropdown
 @app.callback(
     dash.dependencies.Output('state-dropdown', 'options'),

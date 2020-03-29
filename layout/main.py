@@ -19,6 +19,7 @@ df_act = transforms.df_act
 MAIN_STYLE = {
     "margin-left": "16rem",
     "margin-top": "6rem",
+    # "position": "relative",
     # "padding": "0rem 0rem",
 }
 
