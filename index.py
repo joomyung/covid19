@@ -5,7 +5,7 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 from app import app
 from layout import main, sidebar, navbar
@@ -34,9 +34,6 @@ dff.columns = ['Country/Region', 'Cases']
 dff = dff.sort_values(by=['Cases'], ascending=False)
 country_buttons = dff['Country/Region']
 
-print(country_buttons)
-print(dff['Cases'])
-
 # countries having states in dictionary
 countries_states = {}
 countries_having_states = df_con[df_con['Province/State'].notnull()]['Country/Region'].unique()
@@ -51,23 +48,18 @@ app.layout = html.Div([
 ])
 
 ## sidebar.py
-# dynamic country button
 @app.callback(
-    Output('country-button', 'children'),
-    [Input('country-dropdown', 'value')]
+    Output('test-output', 'children'),
+    [Input('global-button', 'n_clicks_timestamp'),
+     Input('US-button', 'n_clicks_timestamp')],
+    [State('global-name', 'children'),
+     State('US-name', 'children')]
 )
-def update_country_button(country_value):
-    return [
-        dbc.Button(id=country+'-button', children = [
-            html.Div([
-                country,
-            ], style={'textAlign':'left', 'width':'50%','display':'inline-block'}),
-            html.Div(
-                dff[dff['Country/Region']==country]['Cases']
-            , style={'textAlign':'right','width':'50%','display':'inline-block'}),
-        ], outline=True, color='dark', block=True)
-        for country in country_buttons
-    ]
+def update_output(global_button, US_button, global_name, US_name):
+    if int(global_button) > int(US_button):
+        return f'{global_name}: {global_button}'
+    elif int(US_button) > int(global_button):
+        return f'{US_name}: {US_button}'
 
 ## main.py
 # country-dropdown -> state-dropdown
