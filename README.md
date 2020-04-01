@@ -7,16 +7,14 @@
 
 ### How do I get set up? ###
 
-Python -m venv venv
-Windows:
-venv\Script\activate
-Unix:
-source venv/bin/activate
-pip install -r requirements.txt
+* Python -m venv venv
+* venv\Script\activate (Windows)
+* source venv/bin/activate (Unix)
+* pip install -r requirements.txt
 
 ### How do I run? ###
 
-python index.py
+* python index.py
 
 ### References ###
 
