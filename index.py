@@ -48,18 +48,18 @@ app.layout = html.Div([
 ])
 
 ## sidebar.py
-@app.callback(
-    Output('test-output', 'children'),
-    [Input('global-button', 'n_clicks_timestamp'),
-     Input('US-button', 'n_clicks_timestamp')],
-    [State('global-name', 'children'),
-     State('US-name', 'children')]
-)
-def update_output(global_button, US_button, global_name, US_name):
-    if int(global_button) > int(US_button):
-        return f'{global_name}: {global_button}'
-    elif int(US_button) > int(global_button):
-        return f'{US_name}: {US_button}'
+# @app.callback(
+#     Output('test-output', 'children'),
+#     [Input('global-button', 'n_clicks_timestamp'),
+#      Input('US-button', 'n_clicks_timestamp')],
+#     [State('global-name', 'children'),
+#      State('US-name', 'children')]
+# )
+# def update_output(global_button, US_button, global_name, US_name):
+#     if int(global_button) > int(US_button):
+#         return f'{global_name[0]}: {global_button}'
+#     elif int(US_button) > int(global_button):
+#         return f'{US_name[0]}: {US_button}'
 
 ## main.py
 # country-dropdown -> state-dropdown

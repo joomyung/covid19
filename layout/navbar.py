@@ -31,7 +31,7 @@ layout = html.Div([
         html.P([
             today.strftime("%A, %B %d, %Y")
         ]),
-        html.P(id='test-output'),
+        # html.P(id='test-output'),
     ], style={'margin-left':'10px'})
 
 ], style=NAVBAR_STYLE)

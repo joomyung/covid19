@@ -39,26 +39,59 @@ SIDEBAR_STYLE = {
 }
 
 def create_country_button(country):
-    return dbc.Button(id=country+'-button', n_clicks_timestamp='0', children = [
+    return html.Div([
             html.Div(id=country+'-name', children = [
                 country,
-            ], style={'textAlign':'left', 'width':'50%','display':'inline-block'}),
+            ], style={
+                'textAlign':'left',
+                'display':'table-cell',
+                'vertical-align': 'middle',
+                'padding': 10,
+            }),
             html.Div(
                 dff[dff['Country/Region']==country]['Cases']
-            , style={'textAlign':'right','width':'50%','display':'inline-block'}),
-        ], outline=True, color='dark', block=True)
+            , style={
+                'textAlign':'right',
+                'display':'table-cell',
+                'vertical-align': 'middle',
+                'padding': 10,
+            }),
+        ], style={
+            'display': 'table',
+            'border':'1px solid',
+            'border-radius': '3px',
+            'height': '30px',
+            'width': '100%',
+            'margin-bottom': 10,
+        })
 
 
 layout = html.Div([
 
-    dbc.Button(id='global-button', n_clicks_timestamp='0', children = [
+    html.Div([
         html.Div(id='global-name', children = [
             "Global",
-        ], style={'textAlign':'left', 'width':'50%','display':'inline-block'}),
+        ], style={
+            'textAlign':'left',
+            'display':'table-cell',
+            'vertical-align': 'middle',
+            'padding': 10,
+        }),
         html.Div([
             df_con.iloc[:, 4:].sum()[-1]
-        ], style={'textAlign':'right','width':'50%','display':'inline-block'}),
-    ], outline=True, color='dark', size='lg', block=True),
+        ], style={
+            'textAlign':'right',
+            'display':'table-cell',
+            'vertical-align': 'middle',
+            'padding': 10,
+        }),
+    ], style={
+        'display': 'table',
+        'border':'1px solid',
+        'border-radius': '3px',
+        'height': '45px',
+        'width': '100%',
+    }),
 
     html.Hr(),
 
