@@ -6,8 +6,6 @@ import dash_bootstrap_components as dbc
 import pandas
 from dash.dependencies import Input, Output
 
-from app import app
-
 from database import transforms
 
 # load data
