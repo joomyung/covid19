@@ -14,7 +14,8 @@
 
 ### How do I run? ###
 
-* python index.py
+* python app.py
+* http://127.0.0.1:8050/
 
 ### References ###
 
