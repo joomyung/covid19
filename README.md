@@ -19,3 +19,4 @@
 ### References ###
 
 * https://dash.plotly.com/
+* https://github.com/CSSEGISandData/COVID-19
