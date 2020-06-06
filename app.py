@@ -12,7 +12,7 @@ from database import transforms
 
 app = dash.Dash(__name__, external_stylesheets = [dbc.themes.BOOTSTRAP])
 
-# server = app.server
+server = app.server # for heroku deployment
 app.config.suppress_callback_exceptions = True
 
 # load data
